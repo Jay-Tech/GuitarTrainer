@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guitar Trainer</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+  <h1>🎸 Guitar Trainer</h1>
+  <nav id="tabs">
+    <button class="tab active" data-view="tuner">Tuner</button>
+    <button class="tab" data-view="fretboard">Fretboard</button>
+    <button class="tab" data-view="chords">Chords</button>
+    <button class="tab" data-view="metronome">Metronome</button>
+  </nav>
+</header>
+
+<main>
+  <!-- ============ TUNER ============ -->
+  <section id="view-tuner" class="view active">
+    <div class="tuner-display">
+      <div id="tuner-note">—</div>
+      <div id="tuner-freq">Press Start and pluck a string</div>
+      <div class="tuner-meter">
+        <div class="tuner-scale">
+          <span>-50</span><span>-25</span><span>0</span><span>+25</span><span>+50</span>
+        </div>
+        <div class="tuner-track">
+          <div class="tuner-center-line"></div>
+          <div id="tuner-needle"></div>
+        </div>
+        <div id="tuner-cents">cents</div>
+      </div>
+      <div id="tuner-status" class="tuner-status">🎯 Tune each string: E A D G B E</div>
+      <button id="tuner-toggle" class="btn-primary">Start Tuner</button>
+      <div class="tuner-strings">
+        <button class="string-btn" data-freq="82.41">E<sub>2</sub><small>6th</small></button>
+        <button class="string-btn" data-freq="110.00">A<sub>2</sub><small>5th</small></button>
+        <button class="string-btn" data-freq="146.83">D<sub>3</sub><small>4th</small></button>
+        <button class="string-btn" data-freq="196.00">G<sub>3</sub><small>3rd</small></button>
+        <button class="string-btn" data-freq="246.94">B<sub>3</sub><small>2nd</small></button>
+        <button class="string-btn" data-freq="329.63">E<sub>4</sub><small>1st</small></button>
+      </div>
+      <p class="hint">Tip: click a string button to hear its reference tone.</p>
+    </div>
+  </section>
+
+  <!-- ============ FRETBOARD ============ -->
+  <section id="view-fretboard" class="view">
+    <div class="controls">
+      <label>Show:
+        <select id="fb-mode">
+          <option value="all">All notes</option>
+          <option value="naturals">Natural notes only</option>
+          <option value="quiz">Quiz me</option>
+        </select>
+      </label>
+      <label>Highlight scale:
+        <select id="fb-scale">
+          <option value="">None</option>
+          <option value="E-minor-pentatonic">E minor pentatonic</option>
+          <option value="A-minor-pentatonic">A minor pentatonic</option>
+          <option value="C-major">C major</option>
+          <option value="G-major">G major</option>
+        </select>
+      </label>
+    </div>
+    <div id="fb-quiz" class="quiz-bar" hidden>
+      <span id="fb-quiz-question">Find: <b>?</b></span>
+      <span id="fb-quiz-score">0 / 0</span>
+    </div>
+    <div id="fretboard-container"></div>
+    <p class="hint">Click any fret to hear the note. Standard tuning, 12 frets.</p>
+  </section>
+
+  <!-- ============ CHORDS ============ -->
+  <section id="view-chords" class="view">
+    <p class="hint">The essential open chords for beginners — learn these first, in this order.</p>
+    <div id="chord-grid" class="chord-grid"></div>
+  </section>
+
+  <!-- ============ METRONOME ============ -->
+  <section id="view-metronome" class="view">
+    <div class="metro-display">
+      <div id="metro-bpm-display">80</div>
+      <div class="metro-bpm-label">BPM</div>
+      <input type="range" id="metro-bpm" min="40" max="208" value="80">
+      <div class="metro-beats" id="metro-beats">
+        <div class="beat"></div><div class="beat"></div><div class="beat"></div><div class="beat"></div>
+      </div>
+      <div class="controls">
+        <label>Beats per bar:
+          <select id="metro-sig">
+            <option value="4" selected>4</option>
+            <option value="3">3</option>
+            <option value="2">2</option>
+            <option value="6">6</option>
+          </select>
+        </label>
+      </div>
+      <button id="metro-toggle" class="btn-primary">Start</button>
+      <p class="hint">Start slow. If you can't play it clean at 60 BPM, you can't play it at 120.</p>
+    </div>
+  </section>
+</main>
+
+<script src="js/audio.js"></script>
+<script src="js/tuner.js"></script>
+<script src="js/fretboard.js"></script>
+<script src="js/chords.js"></script>
+<script src="js/metronome.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
