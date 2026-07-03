@@ -9,5 +9,6 @@ document.querySelectorAll(".tab").forEach((tab) => {
     // Stop anything noisy when leaving its tab.
     if (tab.dataset.view !== "tuner") Tuner.stop();
     if (tab.dataset.view !== "metronome") Metronome.stop();
+    if (tab.dataset.view !== "changes") Changes.stop();
   });
 });

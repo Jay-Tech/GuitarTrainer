@@ -14,8 +14,13 @@ const Fretboard = (() => {
   const SCALES = {
     "E-minor-pentatonic": { root: "E", notes: ["E", "G", "A", "B", "D"] },
     "A-minor-pentatonic": { root: "A", notes: ["A", "C", "D", "E", "G"] },
+    "G-major-pentatonic": { root: "G", notes: ["G", "A", "B", "D", "E"] },
+    "E-blues": { root: "E", notes: ["E", "G", "A", "A#", "B", "D"] },
+    "A-blues": { root: "A", notes: ["A", "C", "D", "D#", "E", "G"] },
     "C-major": { root: "C", notes: ["C", "D", "E", "F", "G", "A", "B"] },
     "G-major": { root: "G", notes: ["G", "A", "B", "C", "D", "E", "F#"] },
+    "D-major": { root: "D", notes: ["D", "E", "F#", "G", "A", "B", "C#"] },
+    "A-major": { root: "A", notes: ["A", "B", "C#", "D", "E", "F#", "G#"] },
   };
 
   const container = document.getElementById("fretboard-container");

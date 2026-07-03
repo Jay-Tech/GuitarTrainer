@@ -244,6 +244,118 @@ main { max-width: 900px; margin: 0 auto; padding: 24px 16px; }
 .chord-diagram .cd-open { fill: none; stroke: var(--green); stroke-width: 1.5; }
 .chord-diagram .cd-mute { fill: var(--red); font-size: 11px; text-anchor: middle; }
 
+.chord-group-title {
+  font-size: 1.05rem;
+  color: var(--accent);
+  margin: 22px 0 10px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 6px;
+}
+.chord-group-title:first-child { margin-top: 0; }
+#chord-sections .chord-grid { margin-bottom: 8px; }
+
+/* ============ CHORD CHANGES ============ */
+.changes-display { max-width: 640px; margin: 0 auto; text-align: center; }
+
+.cc-pair { font-size: 2rem; font-weight: 700; margin-top: 18px; }
+
+.cc-timer {
+  font-size: 4.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--muted);
+  min-height: 5rem;
+}
+.cc-timer.running { color: var(--accent); }
+
+.cc-result {
+  margin-top: 16px;
+  background: var(--panel2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+}
+.cc-result[hidden] { display: none; }
+.cc-result input {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 1.3rem;
+  width: 90px;
+  padding: 8px;
+  text-align: center;
+  margin-left: 8px;
+}
+.cc-result .btn-primary { margin: 0 0 0 14px; padding: 10px 22px; }
+
+.cc-best { margin-top: 18px; font-size: 1.05rem; }
+
+.cc-history { margin-top: 14px; text-align: left; }
+.cc-history h3 { font-size: 0.9rem; color: var(--muted); margin-bottom: 6px; }
+.cc-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 14px;
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+.cc-row span:first-child { color: var(--text); }
+
+/* ============ EAR TRAINING ============ */
+.ear-display { max-width: 640px; margin: 0 auto; text-align: center; }
+
+.ear-feedback {
+  font-size: 1.25rem;
+  min-height: 2em;
+  margin: 18px 0 6px;
+}
+.ear-feedback.good { color: var(--green); }
+.ear-feedback.bad { color: var(--red); }
+
+.ear-actions { display: flex; gap: 12px; justify-content: center; }
+
+.btn-secondary {
+  background: var(--panel2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 1rem;
+  padding: 12px 24px;
+  cursor: pointer;
+  margin-top: 18px;
+}
+.btn-secondary:disabled { opacity: 0.4; cursor: default; }
+.btn-secondary:not(:disabled):hover { border-color: var(--accent); }
+
+.ear-answers {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.ear-answer {
+  background: var(--panel2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  padding: 10px 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.ear-answer small { color: var(--muted); font-size: 0.72rem; }
+.ear-answer:hover { border-color: var(--accent); }
+.ear-answer.correct { border-color: var(--green); background: #1f3527; }
+.ear-answer.wrong { border-color: var(--red); background: #3a2320; }
+
+.ear-score { margin-top: 18px; color: var(--muted); }
+
 /* ============ METRONOME ============ */
 .metro-display { text-align: center; }
 

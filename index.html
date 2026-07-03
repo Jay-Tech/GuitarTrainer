@@ -13,6 +13,8 @@
     <button class="tab active" data-view="tuner">Tuner</button>
     <button class="tab" data-view="fretboard">Fretboard</button>
     <button class="tab" data-view="chords">Chords</button>
+    <button class="tab" data-view="changes">Changes</button>
+    <button class="tab" data-view="ear">Ear</button>
     <button class="tab" data-view="metronome">Metronome</button>
   </nav>
 </header>
@@ -62,8 +64,13 @@
           <option value="">None</option>
           <option value="E-minor-pentatonic">E minor pentatonic</option>
           <option value="A-minor-pentatonic">A minor pentatonic</option>
+          <option value="G-major-pentatonic">G major pentatonic</option>
+          <option value="E-blues">E blues</option>
+          <option value="A-blues">A blues</option>
           <option value="C-major">C major</option>
           <option value="G-major">G major</option>
+          <option value="D-major">D major</option>
+          <option value="A-major">A major</option>
         </select>
       </label>
     </div>
@@ -77,8 +84,57 @@
 
   <!-- ============ CHORDS ============ -->
   <section id="view-chords" class="view">
-    <p class="hint">The essential open chords for beginners — learn these first, in this order.</p>
-    <div id="chord-grid" class="chord-grid"></div>
+    <div id="chord-sections"></div>
+  </section>
+
+  <!-- ============ CHORD CHANGES ============ -->
+  <section id="view-changes" class="view">
+    <div class="changes-display">
+      <p class="hint" style="margin-top:0">One-minute changes: switch back and forth between two chords, strumming each once. Count only <b>clean</b> changes. Track your best — 60+ per minute means the pair is mastered.</p>
+      <div class="controls">
+        <label>Chord A: <select id="cc-chord-a"></select></label>
+        <label>Chord B: <select id="cc-chord-b"></select></label>
+        <label>Duration:
+          <select id="cc-duration">
+            <option value="30">30 s</option>
+            <option value="60" selected>60 s</option>
+          </select>
+        </label>
+      </div>
+      <div id="cc-pair" class="cc-pair">Em ⇄ Am</div>
+      <div id="cc-timer" class="cc-timer">60</div>
+      <button id="cc-start" class="btn-primary">Start Drill</button>
+      <div id="cc-result" class="cc-result" hidden>
+        <label>Clean changes: <input type="number" id="cc-count" min="0" max="200" value="0"></label>
+        <button id="cc-save" class="btn-primary">Save Score</button>
+      </div>
+      <div id="cc-best" class="cc-best"></div>
+      <div id="cc-history" class="cc-history"></div>
+    </div>
+  </section>
+
+  <!-- ============ EAR TRAINING ============ -->
+  <section id="view-ear" class="view">
+    <div class="ear-display">
+      <p class="hint" style="margin-top:0">Interval recognition: two notes play (root, then interval). Name the interval. This is the skill behind playing by ear.</p>
+      <div class="controls">
+        <label>Level:
+          <select id="ear-level">
+            <option value="easy">Easy (5 intervals)</option>
+            <option value="medium">Medium (8)</option>
+            <option value="hard">Hard (all 12)</option>
+          </select>
+        </label>
+        <label><input type="checkbox" id="ear-descending"> Include descending</label>
+      </div>
+      <div id="ear-feedback" class="ear-feedback">Press New Question to begin</div>
+      <div class="ear-actions">
+        <button id="ear-new" class="btn-primary">New Question</button>
+        <button id="ear-replay" class="btn-secondary" disabled>🔁 Replay</button>
+      </div>
+      <div id="ear-answers" class="ear-answers"></div>
+      <div id="ear-score" class="ear-score">Score: 0 / 0</div>
+    </div>
   </section>
 
   <!-- ============ METRONOME ============ -->
@@ -110,6 +166,8 @@
 <script src="js/tuner.js"></script>
 <script src="js/fretboard.js"></script>
 <script src="js/chords.js"></script>
+<script src="js/changes.js"></script>
+<script src="js/ear.js"></script>
 <script src="js/metronome.js"></script>
 <script src="js/app.js"></script>
 </body>
