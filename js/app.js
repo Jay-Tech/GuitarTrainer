@@ -10,5 +10,6 @@ document.querySelectorAll(".tab").forEach((tab) => {
     if (tab.dataset.view !== "tuner") Tuner.stop();
     if (tab.dataset.view !== "metronome") Metronome.stop();
     if (tab.dataset.view !== "changes") Changes.stop();
+    if (tab.dataset.view !== "practice") Practice.stop();
   });
 });

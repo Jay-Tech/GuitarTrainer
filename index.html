@@ -14,6 +14,7 @@
     <button class="tab" data-view="fretboard">Fretboard</button>
     <button class="tab" data-view="chords">Chords</button>
     <button class="tab" data-view="changes">Changes</button>
+    <button class="tab" data-view="practice">Practice</button>
     <button class="tab" data-view="ear">Ear</button>
     <button class="tab" data-view="metronome">Metronome</button>
   </nav>
@@ -113,6 +114,44 @@
     </div>
   </section>
 
+  <!-- ============ PRACTICE (play-along) ============ -->
+  <section id="view-practice" class="view">
+    <div class="practice-display">
+      <p class="hint" style="margin-top:0">Play along with real progressions. Watch the <b>next</b> chord and get your fingers moving before the bar ends — that's the whole skill.</p>
+      <div class="controls">
+        <label>Progression: <select id="pr-prog"></select></label>
+        <label>Strum pattern: <select id="pr-pattern"></select></label>
+      </div>
+      <div class="controls">
+        <label>Tempo: <input type="range" id="pr-bpm" min="50" max="160" value="80"> <span id="pr-bpm-val">80</span> BPM</label>
+        <label>Bars per chord:
+          <select id="pr-bars">
+            <option value="1" selected>1</option>
+            <option value="2">2</option>
+          </select>
+        </label>
+        <label><input type="checkbox" id="pr-sound" checked> Chord sound</label>
+      </div>
+      <div class="pr-stage">
+        <div class="pr-now">
+          <div class="pr-label">NOW</div>
+          <div id="pr-current" class="pr-chord">—</div>
+          <div id="pr-diagram"></div>
+        </div>
+        <div class="pr-next">
+          <div class="pr-label">NEXT</div>
+          <div id="pr-upcoming" class="pr-chord-sm">—</div>
+          <div id="pr-diagram-next"></div>
+        </div>
+      </div>
+      <div class="metro-beats" id="pr-beats">
+        <div class="beat"></div><div class="beat"></div><div class="beat"></div><div class="beat"></div>
+      </div>
+      <div id="pr-strokes" class="pr-strokes"></div>
+      <button id="pr-toggle" class="btn-primary">Start</button>
+    </div>
+  </section>
+
   <!-- ============ EAR TRAINING ============ -->
   <section id="view-ear" class="view">
     <div class="ear-display">
@@ -167,6 +206,7 @@
 <script src="js/fretboard.js"></script>
 <script src="js/chords.js"></script>
 <script src="js/changes.js"></script>
+<script src="js/practice.js"></script>
 <script src="js/ear.js"></script>
 <script src="js/metronome.js"></script>
 <script src="js/app.js"></script>

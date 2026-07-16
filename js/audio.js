@@ -9,9 +9,10 @@ const Audio = (() => {
   }
 
   // Play a plucked-string-ish tone at the given frequency.
-  function playTone(freq, duration = 1.2) {
+  // `when` allows precise Web Audio scheduling; defaults to now.
+  function playTone(freq, duration = 1.2, when = null) {
     const ac = getCtx();
-    const now = ac.currentTime;
+    const now = when ?? ac.currentTime;
     const gain = ac.createGain();
     gain.gain.setValueAtTime(0.0001, now);
     gain.gain.exponentialRampToValueAtTime(0.35, now + 0.01);

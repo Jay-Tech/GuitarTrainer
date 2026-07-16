@@ -19,6 +19,7 @@ const Chords = (() => {
     { group: "7ths & color", name: "A7", sub: "blues staple", frets: [-1, 0, 2, 0, 2, 0], fingers: [0, 0, 2, 0, 3, 0] },
     { group: "7ths & color", name: "D7", sub: "", frets: [-1, -1, 0, 2, 1, 2], fingers: [0, 0, 0, 2, 1, 3] },
     { group: "7ths & color", name: "G7", sub: "", frets: [3, 2, 0, 0, 0, 1], fingers: [3, 2, 0, 0, 0, 1] },
+    { group: "7ths & color", name: "B7", sub: "blues in E needs it", frets: [-1, 2, 1, 2, 0, 2], fingers: [0, 2, 1, 3, 0, 4] },
     { group: "7ths & color", name: "Am7", sub: "", frets: [-1, 0, 2, 0, 1, 0], fingers: [0, 0, 2, 0, 1, 0] },
     { group: "7ths & color", name: "Cadd9", sub: "G's best friend", frets: [-1, 3, 2, 0, 3, 3], fingers: [0, 2, 1, 0, 3, 4] },
     { group: "7ths & color", name: "Dsus4", sub: "", frets: [-1, -1, 0, 2, 3, 3], fingers: [0, 0, 0, 1, 3, 4] },
@@ -86,6 +87,15 @@ const Chords = (() => {
     });
   }
 
+  // Precisely scheduled strum for play-along. up = upstroke (high strings first).
+  function strumAt(chord, when, up = false, duration = 0.5) {
+    const sounding = chord.frets
+      .map((f, i) => (f < 0 ? null : Audio.noteFreq(OPEN_SEMIS[i] + f)))
+      .filter((f) => f !== null);
+    if (up) sounding.reverse();
+    sounding.forEach((freq, idx) => Audio.playTone(freq, duration, when + idx * 0.012));
+  }
+
   function byName(name) {
     return CHORDS.find((c) => c.name === name);
   }
@@ -110,5 +120,5 @@ const Chords = (() => {
     container.appendChild(grid);
   });
 
-  return { CHORDS, strum, byName };
+  return { CHORDS, strum, strumAt, byName, diagramSVG };
 })();
