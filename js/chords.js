@@ -113,8 +113,16 @@ const Chords = (() => {
     CHORDS.filter((c) => c.group === group).forEach((chord) => {
       const card = document.createElement("div");
       card.className = "chord-card";
-      card.innerHTML = `<h3>${chord.name}</h3><div class="chord-sub">${chord.sub || "&nbsp;"}</div>${diagramSVG(chord)}<button>▶ Play</button>`;
-      card.querySelector("button").addEventListener("click", () => strum(chord));
+      card.innerHTML = `<h3>${chord.name}</h3><div class="chord-sub">${chord.sub || "&nbsp;"}</div>${diagramSVG(chord)}
+        <div class="chord-actions">
+          <button class="play-btn">▶ Play</button>
+          <button class="check-btn">🎤 Check</button>
+        </div>
+        <div class="check-result"></div>`;
+      card.querySelector(".play-btn").addEventListener("click", () => strum(chord));
+      const checkBtn = card.querySelector(".check-btn");
+      const resultEl = card.querySelector(".check-result");
+      checkBtn.addEventListener("click", () => Checker.check(chord, card, checkBtn, resultEl));
       grid.appendChild(card);
     });
     container.appendChild(grid);

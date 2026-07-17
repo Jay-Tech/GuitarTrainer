@@ -21,6 +21,7 @@
     <button class="tab" data-view="practice">Practice</button>
     <button class="tab" data-view="ear">Ear</button>
     <button class="tab" data-view="metronome">Metronome</button>
+    <button class="tab" data-view="log">Log</button>
   </nav>
 </header>
 
@@ -219,11 +220,29 @@
       <p class="hint">Start slow. If you can't play it clean at 60 BPM, you can't play it at 120.</p>
     </div>
   </section>
+
+  <!-- ============ PRACTICE LOG ============ -->
+  <section id="view-log" class="view">
+    <div class="log-display">
+      <div class="log-stats">
+        <div class="log-stat"><div id="log-streak" class="log-stat-num">0</div><div class="log-stat-label">day streak</div></div>
+        <div class="log-stat"><div id="log-best" class="log-stat-num">0</div><div class="log-stat-label">best streak</div></div>
+        <div class="log-stat"><div id="log-days" class="log-stat-num">0</div><div class="log-stat-label">days practiced</div></div>
+      </div>
+      <h3 class="log-h">Last 4 weeks</h3>
+      <div id="log-grid" class="log-grid"></div>
+      <h3 class="log-h">All-time activity</h3>
+      <div id="log-types"></div>
+      <p class="hint">Logged automatically — tuning, drills, play-alongs, ear questions, chord checks, and metronome sessions all count.</p>
+    </div>
+  </section>
 </main>
 
 <script src="js/audio.js"></script>
+<script src="js/log.js"></script>
 <script src="js/tuner.js"></script>
 <script src="js/fretboard.js"></script>
+<script src="js/checker.js"></script>
 <script src="js/chords.js"></script>
 <script src="js/changes.js"></script>
 <script src="js/practice.js"></script>

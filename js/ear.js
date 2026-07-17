@@ -89,6 +89,7 @@ const Ear = (() => {
       feedbackEl.className = "ear-feedback bad";
     }
     scoreEl.textContent = `Score: ${right} / ${total}`;
+    if (window.Log) Log.record("ear");
   }
 
   newBtn.addEventListener("click", newQuestion);

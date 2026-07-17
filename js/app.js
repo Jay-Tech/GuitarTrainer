@@ -11,5 +11,7 @@ document.querySelectorAll(".tab").forEach((tab) => {
     if (tab.dataset.view !== "metronome") Metronome.stop();
     if (tab.dataset.view !== "changes") Changes.stop();
     if (tab.dataset.view !== "practice") Practice.stop();
+    if (tab.dataset.view !== "chords") Checker.stop();
+    if (tab.dataset.view === "log") Log.render();
   });
 });

@@ -54,6 +54,7 @@ const Metronome = (() => {
     scheduler();
     toggleBtn.textContent = "Stop";
     toggleBtn.classList.add("running");
+    if (window.Log) Log.record("metronome");
   }
 
   function stop() {

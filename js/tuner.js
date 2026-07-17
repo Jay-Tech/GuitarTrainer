@@ -137,6 +137,7 @@ const Tuner = (() => {
     toggleBtn.textContent = "Stop Tuner";
     toggleBtn.classList.add("running");
     statusEl.textContent = "🎧 Listening… pluck a string";
+    if (window.Log) Log.record("tuner");
     update();
   }
 

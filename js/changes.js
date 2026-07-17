@@ -187,6 +187,7 @@ const Changes = (() => {
       date: new Date().toISOString().slice(0, 10),
     });
     saveScores(scores);
+    if (window.Log) Log.record("changes");
     resultEl.hidden = true;
     timerEl.textContent = durSel.value;
     refreshDisplay();
