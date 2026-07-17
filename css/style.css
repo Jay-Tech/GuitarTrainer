@@ -259,6 +259,65 @@ main { max-width: 900px; margin: 0 auto; padding: 24px 16px; }
 
 .cc-pair { font-size: 2rem; font-weight: 700; margin-top: 18px; }
 
+.cc-diagrams {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.cc-diagram-card {
+  background: var(--panel);
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 14px 8px;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.cc-diagram-card.cc-active {
+  border-color: var(--green);
+  background: #1f3527;
+}
+
+.cc-diagram-label {
+  color: var(--muted);
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+}
+
+.cc-live[hidden] { display: none; }
+
+.cc-live {
+  margin-top: 8px;
+}
+
+.cc-count-live {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--accent);
+}
+
+.cc-target {
+  font-size: 1.15rem;
+  color: var(--muted);
+  margin: 6px 0 4px;
+}
+
+.cc-target b { color: var(--green); }
+
+.cc-tap-btn {
+  width: 100%;
+  max-width: 320px;
+  padding: 18px 32px;
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+.cc-tap-hint { margin-top: 8px; font-size: 0.8rem; }
+
 .cc-timer {
   font-size: 4.5rem;
   font-weight: 700;
