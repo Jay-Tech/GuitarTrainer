@@ -19,6 +19,11 @@ button, select, input, .fret-note {
 }
 button { -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; }
 
+html, body {
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
+}
+
 body {
   font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
   background: var(--bg);
@@ -46,6 +51,10 @@ h1 { font-size: 1.3rem; margin-bottom: 12px; }
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
+  /* Swiping the tab bar must never chain into panning the page,
+     and horizontal pans on it shouldn't scroll the page vertically. */
+  overscroll-behavior-x: contain;
+  touch-action: pan-x;
 }
 #tabs::-webkit-scrollbar { display: none; }
 
@@ -190,7 +199,7 @@ main { max-width: 900px; margin: 0 auto; padding: 24px 16px; }
 .string-btn.target { border-color: var(--green); background: #1f3527; }
 
 /* ============ FRETBOARD ============ */
-#fretboard-container { overflow-x: auto; }
+#fretboard-container { overflow-x: auto; overscroll-behavior-x: contain; touch-action: pan-x pan-y; }
 #fretboard-container svg { display: block; margin: 0 auto; min-width: 700px; }
 
 .fret-note { cursor: pointer; }
