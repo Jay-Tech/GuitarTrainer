@@ -1,0 +1,18 @@
+{
+  "name": "Guitar Trainer",
+  "short_name": "GuitarTrainer",
+  "description": "Tuner, fretboard, chords, chord-change drills, play-along practice, ear training, and metronome.",
+  "start_url": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#14181f",
+  "theme_color": "#14181f",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

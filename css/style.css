@@ -12,6 +12,13 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* Kill double-tap-to-zoom on all controls — critical for rapid taps
+   on the +1 drill button and metronome/practice toggles. */
+button, select, input, .fret-note {
+  touch-action: manipulation;
+}
+button { -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; }
+
 body {
   font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
   background: var(--bg);
@@ -21,13 +28,26 @@ body {
 
 header {
   padding: 16px 20px 0;
+  padding-left: max(20px, env(safe-area-inset-left));
+  padding-right: max(20px, env(safe-area-inset-right));
+  padding-top: max(16px, env(safe-area-inset-top));
   background: var(--panel);
   border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 h1 { font-size: 1.3rem; margin-bottom: 12px; }
 
-#tabs { display: flex; gap: 4px; }
+#tabs {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+#tabs::-webkit-scrollbar { display: none; }
 
 .tab {
   background: none;
@@ -37,6 +57,8 @@ h1 { font-size: 1.3rem; margin-bottom: 12px; }
   font-size: 1rem;
   padding: 10px 18px;
   cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .tab:hover { color: var(--text); }
 .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
@@ -488,6 +510,28 @@ main { max-width: 900px; margin: 0 auto; padding: 24px 16px; }
 .beat.on.downbeat { background: var(--green); }
 
 @media (max-width: 600px) {
+  header { padding-top: max(10px, env(safe-area-inset-top)); }
+  h1 { font-size: 1.1rem; margin-bottom: 8px; }
+  main { padding: 16px 10px calc(24px + env(safe-area-inset-bottom)); }
+
   #tuner-note { font-size: 4rem; }
-  .tab { padding: 10px 10px; font-size: 0.9rem; }
+  .tab { padding: 10px 12px; font-size: 0.95rem; }
+
+  /* 16px stops iOS Safari from auto-zooming into focused controls. */
+  .controls select, .cc-result input { font-size: 16px; }
+  .controls { gap: 10px 18px; margin-bottom: 12px; }
+
+  .string-btn { width: 52px; font-size: 1rem; }
+
+  .chord-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+
+  .cc-timer { font-size: 3.5rem; min-height: 4rem; }
+  .cc-pair { font-size: 1.5rem; }
+  .cc-result { display: flex; flex-direction: column; gap: 12px; align-items: center; }
+  .cc-result .btn-primary { margin: 0; }
+  .cc-row { gap: 8px; font-size: 0.8rem; }
+
+  .ear-answers { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+
+  #metro-bpm-display { font-size: 4rem; }
 }
