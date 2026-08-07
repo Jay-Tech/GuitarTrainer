@@ -18,10 +18,12 @@ const Log = (() => {
   }
   function save(data) { localStorage.setItem(KEY, JSON.stringify(data)); }
 
+  // Local-timezone date key — toISOString() is UTC and would roll the
+  // day over at 7pm Central, splitting streaks and misdating lessons.
   function todayKey(offset = 0) {
     const d = new Date();
     d.setDate(d.getDate() - offset);
-    return d.toISOString().slice(0, 10);
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
   }
 
   function record(type) {

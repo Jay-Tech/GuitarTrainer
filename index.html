@@ -19,6 +19,7 @@
     <button class="tab" data-view="chords">Chords</button>
     <button class="tab" data-view="changes">Changes</button>
     <button class="tab" data-view="practice">Practice</button>
+    <button class="tab" data-view="lessons">Lessons</button>
     <button class="tab" data-view="ear">Ear</button>
     <button class="tab" data-view="metronome">Metronome</button>
     <button class="tab" data-view="log">Log</button>
@@ -173,6 +174,33 @@
     </div>
   </section>
 
+  <!-- ============ LESSONS ============ -->
+  <section id="view-lessons" class="view">
+    <div class="lessons-display">
+      <p class="hint" style="margin-top:0">Your weekly lesson notebook. Photograph handouts, attach PDFs, save links, and write up what you covered — stored privately on this device.</p>
+      <div class="ls-toolbar">
+        <button id="ls-new" class="btn-primary">＋ New lesson</button>
+        <button id="ls-export" class="btn-secondary">⬇ Backup</button>
+        <label class="btn-secondary ls-import-label">⬆ Restore<input type="file" id="ls-import" accept="application/json" hidden></label>
+      </div>
+      <div id="ls-form" class="ls-form" hidden>
+        <label>Date <input type="date" id="ls-date"></label>
+        <label>Title <input type="text" id="ls-title" placeholder="e.g. Week 3 — barre chords &amp; rhythm"></label>
+        <label>Notes <textarea id="ls-notes" rows="5" placeholder="What we covered, what to practice this week, things to remember…"></textarea></label>
+        <label>Links (one per line) <textarea id="ls-links" rows="2" placeholder="https://…"></textarea></label>
+        <label class="ls-files-label">Sheet music / handouts (photos or PDFs)
+          <input type="file" id="ls-files" accept="image/*,application/pdf" multiple>
+        </label>
+        <div id="ls-existing"></div>
+        <div class="ls-form-actions">
+          <button id="ls-save" class="btn-primary">Save Lesson</button>
+          <button id="ls-cancel" class="btn-secondary">Cancel</button>
+        </div>
+      </div>
+      <div id="ls-list"></div>
+    </div>
+  </section>
+
   <!-- ============ EAR TRAINING ============ -->
   <section id="view-ear" class="view">
     <div class="ear-display">
@@ -238,6 +266,10 @@
   </section>
 </main>
 
+<div id="ls-overlay" class="ls-overlay" hidden>
+  <img id="ls-overlay-img" alt="Sheet music">
+</div>
+
 <script src="js/audio.js"></script>
 <script src="js/log.js"></script>
 <script src="js/tuner.js"></script>
@@ -246,6 +278,7 @@
 <script src="js/chords.js"></script>
 <script src="js/changes.js"></script>
 <script src="js/practice.js"></script>
+<script src="js/lessons.js"></script>
 <script src="js/ear.js"></script>
 <script src="js/metronome.js"></script>
 <script src="js/app.js"></script>
